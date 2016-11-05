@@ -19,7 +19,7 @@ public class Tic_Tac_Toe {
 		int counter =1;
 		while (continued){
 			if (counter%2==0){
-				player="Y";
+				player="O";
 			}
 			else {
 				player="X";
