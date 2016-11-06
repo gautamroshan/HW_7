@@ -16,6 +16,8 @@ public class Tic_Tac_Toe {
 		Scanner input = new Scanner(System.in);
 		boolean continued = true;
 		String player ="X";
+		String matcher[]=new String[3];
+		int Status=1;
 		int counter =1;
 		while (continued){
 			if (counter%2==0){
@@ -25,19 +27,51 @@ public class Tic_Tac_Toe {
 				player="X";
 			}
 			for (int i=0; i<=2; i++){
+				matcher[2]+=matrix[i][i];
+				if (matcher[2].equals("XXX")||matcher[2].equals("OOO")){
+					continued=false;
+					 Status=0;
+					break ;
+					}
+				//This checking process should be made a separate method
+				matcher[2]="";
 				for (int j=0; j<=2; j++){
+					
 					System.out.print(matrix[i][j]+" ");
+					matcher[1]+=matrix[i][j];
+					matcher[0]+=matrix[j][i];
+					
+					if (matcher[1].equals("XXX")||matcher[1].equals("OOO")){
+						continued=false;
+						 Status=0;
+						break ;
+						}
+					if (matcher[0].equals("XXX")||matcher[0].equals("OOO")){
+						continued=false;
+						 Status=0;
+						break ;
+						}
 				}
 				System.out.println();
+				matcher[1]="";
+				matcher[0]="";
+			
 			}
+			if (Status==1){
 			System.out.println("Enter the row for Player " +player );
 			int row = input.nextInt();
 			System.out.println("Enter the column for Player "+player);
 			int column = input.nextInt();
 			matrix[row][column]=player;
 			counter++;
-			
-		} 
+			}
+		}
+		System.out.println("The winner is Player "+player+"! Thank you for Playing");
+		//This part needs to be worked on!
+	
 	}
-
+	
+		
+			
 }
+			
